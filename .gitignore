@@ -1,3 +1,6 @@
 *.classpath
 .project
 *.prefs
+*.class
+target/classes/sample-video.mp4
+*.json
