@@ -1,6 +1,6 @@
 *.classpath
 .project
 *.prefs
-target/classes/client_secrets.json
 *.class
 target/classes/sample-video.mp4
+*.json
