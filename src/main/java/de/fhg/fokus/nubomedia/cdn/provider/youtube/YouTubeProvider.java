@@ -1,8 +1,5 @@
 package de.fhg.fokus.nubomedia.cdn.provider.youtube;
 
-import java.io.IOException;
-import java.util.List;
-
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.googleapis.media.MediaHttpUploader;
@@ -13,51 +10,66 @@ import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoSnippet;
 import com.google.api.services.youtube.model.VideoStatus;
 import com.google.common.collect.Lists;
-
 import de.fhg.fokus.nubomedia.cdn.CdnException;
 import de.fhg.fokus.nubomedia.cdn.CdnProvider;
 import de.fhg.fokus.nubomedia.cdn.CdnProviderListener;
 import de.fhg.fokus.nubomedia.cdn.VideoMetaData;
 
-public class YouTubeProvider implements CdnProvider{
-		
-		
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.util.List;
+
+public class YouTubeProvider implements CdnProvider {
+
+
     private final String VIDEO_FILE_FORMAT = "video/*";
     private final String SAMPLE_VIDEO_FILENAME = "sample-video.mp4";
     private YouTube youtube;
-    
-	//constructor
-	public YouTubeProvider(){		 
-		
 
-	}
-	
-	public void uploadVideo(String sessionId, VideoMetaData metaData) throws CdnException {
-		try {
-			System.out.println("Uploading: " + SAMPLE_VIDEO_FILENAME);
+    //constructor
+    public YouTubeProvider() {
 
-            
-			List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube.upload");
-			Credential credential = Auth.authorize(scopes, "uploadvideo");
-			youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName(
-	                "youtube-cmdline-uploadvideo-sample").build();
-	                  
-			// Add extra information to the video before uploading.
+
+    }
+
+    public void uploadVideo(URL url, VideoMetaData metaData) {
+        try {
+            ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+            InputStream videoStream = Channels.newInputStream(rbc);
+            uploadVideo(videoStream, metaData);
+        } catch (IOException | CdnException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void uploadVideo(InputStream videoStream, VideoMetaData metaData) throws CdnException {
+        try {
+            System.out.println("Uploading: " + SAMPLE_VIDEO_FILENAME);
+
+
+            List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube.upload");
+            Credential credential = Auth.authorize(scopes, "uploadvideo");
+            youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName(
+                    "youtube-cmdline-uploadvideo-sample").build();
+
+            // Add extra information to the video before uploading.
             Video videoObjectDefiningMetadata = new Video();
-            
+
             VideoStatus status = new VideoStatus();
             status.setPrivacyStatus("public");
             videoObjectDefiningMetadata.setStatus(status);
-            
-            VideoSnippet snippet = new VideoSnippet();            
+
+            VideoSnippet snippet = new VideoSnippet();
             snippet.setTitle(metaData.getTitle());
-            snippet.setDescription(metaData.getDescription());            
+            snippet.setDescription(metaData.getDescription());
             snippet.setTags(metaData.getTags());
             videoObjectDefiningMetadata.setSnippet(snippet);
 
-            InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT,
-                    YouTubeProvider.class.getResourceAsStream("/sample-video.mp4"));
-          
+            InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT, videoStream);
+
             YouTube.Videos.Insert videoInsert = youtube.videos()
                     .insert("snippet,statistics,status", videoObjectDefiningMetadata, mediaContent);
 
@@ -111,27 +123,32 @@ public class YouTubeProvider implements CdnProvider{
             System.err.println("Throwable: " + t.getMessage());
             t.printStackTrace();
         }
-		
-	}
 
-	public void deleteVideo(String videoId) throws CdnException {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	public void getChannelList() throws CdnException {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void uploadVideo(String sessionId, VideoMetaData metaData) throws CdnException {
 
-	public void addProviderListener(CdnProviderListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	public void removeProviderListener(CdnProviderListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void deleteVideo(String videoId) throws CdnException {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void getChannelList() throws CdnException {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void addProviderListener(CdnProviderListener listener) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void removeProviderListener(CdnProviderListener listener) {
+        // TODO Auto-generated method stub
+
+    }
 
 }
