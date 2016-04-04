@@ -1,17 +1,23 @@
 package de.fhg.fokus.nubomedia.cdn.provider.youtube;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.List;
-
 import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.auth.oauth2.StoredCredential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.store.DataStore;
+import com.google.api.client.util.store.FileDataStoreFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.List;
 
 /**
  * Shared class used by every sample. Contains methods for authorizing a user and caching credentials.
@@ -53,18 +59,7 @@ public class Auth {
                             + "into src/main/resources/client_secrets.json");
             System.exit(1);
         }
-               
-        GoogleCredential credential = new GoogleCredential.Builder()
-    		    .setTransport(HTTP_TRANSPORT)
-    		    .setJsonFactory(JSON_FACTORY)
-    		    .setClientSecrets(clientSecrets.getDetails().getClientId(), clientSecrets.getDetails().getClientSecret())
-//    		    .setServiceAccountScopes(scopes)
-    		    .build();
-        
-        return credential;
-        
-        /*
-         *  // This creates the credentials datastore at ~/.oauth-credentials/${credentialDatastore}
+        // This creates the credentials datastore at ~/.oauth-credentials/${credentialDatastore}
         FileDataStoreFactory fileDataStoreFactory = new FileDataStoreFactory(new File(System.getProperty("user.home") + "/" + CREDENTIALS_DIRECTORY));
         DataStore<StoredCredential> datastore = fileDataStoreFactory.getDataStore(credentialDatastore);
 
@@ -76,7 +71,7 @@ public class Auth {
         LocalServerReceiver localReceiver = new LocalServerReceiver.Builder().setPort(8080).build();
 
         // Authorize.
-        return new AuthorizationCodeInstalledApp(flow, localReceiver).authorize("user");*/
-    		
+        return new AuthorizationCodeInstalledApp(flow, localReceiver).authorize("user");
+
     }
 }
