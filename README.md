@@ -15,7 +15,7 @@ To get the correct repository url for the item you want uploaded to youtube, the
 ```
 RepositoryItemRecorder repoItem;
 ...
-RepositoryItemPlayer itemPlayer = repositoryClient.getReadEndpoint(repoItemId);
+RepositoryItemPlayer itemPlayer = repositoryClient.getReadEndpoint(repoItem.getId());
 String urlString = itemPlayer.getUrl();
 ```
 
