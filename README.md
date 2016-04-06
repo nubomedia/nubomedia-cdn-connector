@@ -1,4 +1,9 @@
 # Nubomedia CDN Connector
+## Execution
+```
+1. mvn install
+2. java -jar target/nubomedia-cdn-client-0.0.2-jar-with-dependencies.jar
+```
 
 ## Usage
 ### Youtube

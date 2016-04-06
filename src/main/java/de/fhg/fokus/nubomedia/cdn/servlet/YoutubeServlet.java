@@ -1,4 +1,4 @@
-package de.fhg.fokus.nubomedia.cdn;
+package de.fhg.fokus.nubomedia.cdn.servlet;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
@@ -8,6 +8,7 @@ import com.google.api.client.util.Base64;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import de.fhg.fokus.nubomedia.cdn.VideoMetaData;
 import de.fhg.fokus.nubomedia.cdn.provider.youtube.Auth;
 import de.fhg.fokus.nubomedia.cdn.provider.youtube.YouTubeProvider;
 import org.slf4j.Logger;

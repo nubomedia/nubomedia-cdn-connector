@@ -1,5 +1,7 @@
 package de.fhg.fokus.nubomedia.cdn;
 
+import de.fhg.fokus.nubomedia.cdn.servlet.EventServlet;
+import de.fhg.fokus.nubomedia.cdn.servlet.YoutubeServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
