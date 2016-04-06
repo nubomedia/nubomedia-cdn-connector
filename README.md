@@ -19,7 +19,7 @@ RepositoryItemPlayer itemPlayer = repositoryClient.getReadEndpoint(repoItemId);
 String urlString = itemPlayer.getUrl();
 ```
 
-Please Note: repoItem.getUrl() will not work!
+Please Note: `repoItem.getUrl()` is not the correct URL!
 
 To get notifications of the upload status, you can set up an EventSource at:
 
