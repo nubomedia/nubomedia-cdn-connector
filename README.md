@@ -3,12 +3,13 @@
 ## Usage
 ### Youtube
 To use the Nubomedia CDN Connector to upload a video that is stored on the kurento repository server, you have to connect a browser to the following destination:
-`http://<cdn-connector-ip>:9090/youtube?videoUrl=<repository-url>`
+```
+http://<cdn-connector-ip>:9090/youtube?videoUrl=<repository-url>
 
-`cdn-connector-ip:` IP of this server
-
-`repository-url:` kurento repository url that would let you play the video directly,
-e.g. `http://localhost:7676/repository_servlet/k9uaue12345o4t20cd9pd80vl0`
+<cdn-connector-ip>: IP of this server
+<repository-url>: kurento repository url that would let you play the video directly,
+e.g. http://localhost:7676/repository_servlet/k9uaue12345o4t20cd9pd80vl0
+```
 
 To get the correct repository url for the item you want uploaded to youtube, the following code snipped should help you:
 ```
