@@ -3,15 +3,14 @@
 ## Usage
 ### Youtube
 To use the Nubomedia CDN Connector to upload a video that is stored on the kurento repository server, you have to connect a browser to the following destination:
+`http://<cdn-connector-ip>:9090/youtube?videoUrl=<repository-url>`
 
-http://<cdn-connector-ip>:9090/youtube?videoUrl=<repository-url>
+`cdn-connector-ip:` IP of this server
 
-cdn-connector-ip: IP of this server
-repository-url: kurento repository url that would let you play the video directly,
-e.g. http://localhost:7676/repository_servlet/k9uaue12345o4t20cd9pd80vl0
+`repository-url:` kurento repository url that would let you play the video directly,
+e.g. `http://localhost:7676/repository_servlet/k9uaue12345o4t20cd9pd80vl0`
 
 To get the correct repository url for the item you want uploaded to youtube, the following code snipped should help you:
-
 ```
 RepositoryItemRecorder repoItem;
 ...
@@ -21,12 +20,13 @@ String urlString = itemPlayer.getUrl();
 
 Please Note: repoItem.getUrl() will not work!
 
-To get notifications of the upload status, you can set up an EventSource at: http://<cdn-connector-ip>:9090/event?videoUrl=<repository-url>
+To get notifications of the upload status, you can set up an EventSource at:
+
+`http://<cdn-connector-ip>:9090/event?videoUrl=<repository-url>`
 
 You can provide meta data for the video by adding the "metaData" query in the initial request, its value should be a json encoded as base64.
 
-Here is a code snippet showing you, how your javascript solution could look like:
-
+Here is a code snippet showing you how your javascript solution could look like:
 ```
 var cdnurl = "http://localhost:9090";
 var cdn_youtube = cdnurl + "/youtube";
