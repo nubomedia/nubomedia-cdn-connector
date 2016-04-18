@@ -15,7 +15,7 @@ A number of use cases have been identified that will be interesting for NUBOMEDI
 2. java -jar target/nubomedia-cdn-client-0.0.2-jar-with-dependencies.jar
 ```
 
-## Usage
+## Usage for Application Developers
 ### Youtube Provider API
 To use the Nubomedia CDN Connector to upload a video that is stored on the kurento repository server, you have to connect a browser to the following destination:
 ```
