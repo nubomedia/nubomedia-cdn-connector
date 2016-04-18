@@ -1,12 +1,22 @@
 # Nubomedia CDN Connector
-## Execution
+This project is part of the [NUBOMEDIA](http://www.nubomedia.eu/) research initiative.
+
+### Overview
+This main objective of the NUBOMEDIA CDN Connector is to evaluate current online user-generated content delivery providers who offer open APIs to access the user’s data and provide a service to NUBOMEDIA users/applications to connect to one or more CDN via an API.  
+A number of use cases have been identified that will be interesting for NUBOMEDIA for the usage of such existing third party CDNs:
+* **Upload a file to CDN**: Uploading a video file to the specific CDN which has been recorded before. This allows a user to upload their video call session to a CDN and publish this video content to users connecting to this CDN.
+* **Discover videos stored on a CDN**:  Provide an API that NUBOMEDIA clients can use to discover video content stored on the CDN.
+* **Delete Videos**: Delete previously uploaded videos
+
+
+## Getting Started
 ```
 1. mvn install
 2. java -jar target/nubomedia-cdn-client-0.0.2-jar-with-dependencies.jar
 ```
 
 ## Usage
-### Youtube
+### Youtube Provider API
 To use the Nubomedia CDN Connector to upload a video that is stored on the kurento repository server, you have to connect a browser to the following destination:
 ```
 http://<cdn-connector-ip>:9090/youtube?videoUrl=<repository-url>
