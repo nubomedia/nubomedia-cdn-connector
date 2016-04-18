@@ -1,6 +1,7 @@
 package de.fhg.fokus.nubomedia.cdn.provider.youtube;
 
 import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.googleapis.media.MediaHttpUploader;
 import com.google.api.client.googleapis.media.MediaHttpUploaderProgressListener;
@@ -9,50 +10,42 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoSnippet;
 import com.google.api.services.youtube.model.VideoStatus;
-import com.google.common.collect.Lists;
 import de.fhg.fokus.nubomedia.cdn.CdnException;
 import de.fhg.fokus.nubomedia.cdn.CdnProvider;
 import de.fhg.fokus.nubomedia.cdn.CdnProviderListener;
 import de.fhg.fokus.nubomedia.cdn.VideoMetaData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
-import java.util.List;
 
 public class YouTubeProvider implements CdnProvider {
 
-
     private final String VIDEO_FILE_FORMAT = "video/*";
-    private final String SAMPLE_VIDEO_FILENAME = "sample-video.mp4";
-    private YouTube youtube;
+    private static final Logger log = LoggerFactory.getLogger(YouTubeProvider.class);
 
-    //constructor
-    public YouTubeProvider() {
-
-
+    public void uploadVideo(URL url, VideoMetaData metaData, String accessToken) {
+        uploadVideo(url, metaData, accessToken, null);
     }
 
-    public void uploadVideo(URL url, VideoMetaData metaData) {
+    public void uploadVideo(URL url, VideoMetaData metaData, String accessToken, MediaHttpUploaderProgressListener progressListener) {
         try {
             ReadableByteChannel rbc = Channels.newChannel(url.openStream());
             InputStream videoStream = Channels.newInputStream(rbc);
-            uploadVideo(videoStream, metaData);
+            uploadVideo(videoStream, metaData, accessToken, progressListener);
         } catch (IOException | CdnException e) {
             e.printStackTrace();
         }
     }
 
-    public void uploadVideo(InputStream videoStream, VideoMetaData metaData) throws CdnException {
+    public void uploadVideo(InputStream videoStream, VideoMetaData metaData, String accessToken, MediaHttpUploaderProgressListener progressListener) throws CdnException {
         try {
-            System.out.println("Uploading: " + SAMPLE_VIDEO_FILENAME);
-
-
-            List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube.upload");
-            Credential credential = Auth.authorize(scopes, "uploadvideo");
-            youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName(
+            Credential credential = new GoogleCredential().setAccessToken(accessToken);
+            YouTube youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName(
                     "youtube-cmdline-uploadvideo-sample").build();
 
             // Add extra information to the video before uploading.
@@ -77,28 +70,38 @@ public class YouTubeProvider implements CdnProvider {
             MediaHttpUploader uploader = videoInsert.getMediaHttpUploader();
             uploader.setDirectUploadEnabled(false);
 
-            MediaHttpUploaderProgressListener progressListener = new MediaHttpUploaderProgressListener() {
-                public void progressChanged(MediaHttpUploader uploader) throws IOException {
-                    switch (uploader.getUploadState()) {
-                        case INITIATION_STARTED:
-                            System.out.println("Initiation Started");
-                            break;
-                        case INITIATION_COMPLETE:
-                            System.out.println("Initiation Completed");
-                            break;
-                        case MEDIA_IN_PROGRESS:
-                            System.out.println("Upload in progress");
-                            System.out.println("Upload percentage: " + uploader.getProgress());
-                            break;
-                        case MEDIA_COMPLETE:
-                            System.out.println("Upload Completed!");
-                            break;
-                        case NOT_STARTED:
-                            System.out.println("Upload Not Started!");
-                            break;
+            if (progressListener == null)
+                progressListener = new MediaHttpUploaderProgressListener() {
+                    public void progressChanged(MediaHttpUploader uploader) throws IOException {
+                        switch (uploader.getUploadState()) {
+                            case INITIATION_STARTED:
+                                log.debug("Initiation Started");
+                                //if (event != null)
+                                //    event.sendNotification("Initiation Started");
+                                break;
+                            case INITIATION_COMPLETE:
+                                log.debug("Initiation Completed");
+                                //if (event != null)
+                                //    event.sendNotification("Initiation Completed");
+                                break;
+                            case MEDIA_IN_PROGRESS:
+                                log.debug("Upload in progress, " + uploader.getProgress() + "%");
+                                //if (event != null)
+                                //    event.sendNotification("Upload in progress, " + uploader.getProgress() + "%");
+                                break;
+                            case MEDIA_COMPLETE:
+                                log.debug("Upload Completed!");
+                                //if (event != null)
+                                //    event.sendNotification("Upload Completed!");
+                                break;
+                            case NOT_STARTED:
+                                log.debug("Upload Not Started!");
+                                //if (event != null)
+                                //    event.sendNotification("Upload Not Started!");
+                                break;
+                        }
                     }
-                }
-            };
+                };
             uploader.setProgressListener(progressListener);
 
             // Call the API and upload the video.
