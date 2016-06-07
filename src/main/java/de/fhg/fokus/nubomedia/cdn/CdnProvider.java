@@ -1,5 +1,7 @@
 package de.fhg.fokus.nubomedia.cdn;
 
+import com.google.api.client.auth.oauth2.Credential;
+
 public interface CdnProvider {
 		
 	/**
@@ -19,7 +21,7 @@ public interface CdnProvider {
 	public void deleteVideo(String videoId) throws CdnException;
 	
 	/**
-	 * Returns a JSON object with the list of all uploaded videos on the registered user’s channel
+	 * Returns a JSON object with the list of all uploaded videos on the registered userï¿½s channel
 	 * @throws CdnException
 	 */
 	public void getChannelList() throws CdnException;
@@ -36,5 +38,5 @@ public interface CdnProvider {
 	 */
 	public void removeProviderListener(CdnProviderListener listener);
 	
-	
+	public void storeCredentials(Credential credential);
 }
