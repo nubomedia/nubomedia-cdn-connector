@@ -1,5 +1,7 @@
 package de.fhg.fokus.nubomedia.cdn.provider.vimeo;
 
+import com.google.api.client.auth.oauth2.Credential;
+
 import de.fhg.fokus.nubomedia.cdn.CdnException;
 import de.fhg.fokus.nubomedia.cdn.CdnProvider;
 import de.fhg.fokus.nubomedia.cdn.CdnProviderListener;
@@ -35,6 +37,12 @@ public class VimeoProvider implements CdnProvider {
 	public void removeProviderListener(CdnProviderListener listener) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void storeCredentials(Credential credential) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

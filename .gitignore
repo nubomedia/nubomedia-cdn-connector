@@ -6,3 +6,9 @@
 *.class
 target/classes/sample-video.mp4
 *.json
+*.xml
+target/classes/webapp/index.html
+target/maven-archiver/pom.properties
+*.lst
+target/nubomedia-cdn-client-0.0.2-jar-with-dependencies.jar
+*.jar
