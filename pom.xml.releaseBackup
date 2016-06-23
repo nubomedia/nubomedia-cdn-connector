@@ -1,34 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.fhg.fokus.nubomedia</groupId>
     <artifactId>nubomedia-cdn-client</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>nubomedia-cdn-client</name>
     <description>The NUBOMEDIA CDN client provides functionality to connect to users CDN network from the NUBOMEDIA
         cloud platform
     </description>
-    <organization>
-		<name>Fraunhofer FOKUS</name>
-		<url>www.fokus.fraunhofer.de</url>
-	</organization>
-	<licenses>
-		<license>
-			<name>The Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-		</license>
-	</licenses>
-	<developers>
-		<developer>
-			<name>Cheambe Alice</name>
-			<email>alice.cheambe@fokus.fraunhofer.de</email>
-			<organization>Fraunhofer FOKUS</organization>
-			<organizationUrl>http://www.fokus.fraunhofer.de</organizationUrl>
-		</developer>
-	</developers>
     <properties>
        <slf4j.version>1.7.20</slf4j.version>
-       <java.version>1.7</java.version>
-		<maven.javadoc.skip>false</maven.javadoc.skip>
         <log4j.version>2.5</log4j.version>
         <project.youtube.version>v3-rev107-1.18.0-rc</project.youtube.version>
         <project.youtube.analytics.version>v1-rev24-1.17.0-rc</project.youtube.analytics.version>
@@ -36,12 +17,7 @@
         <project.oauth.version>1.18.0-rc</project.oauth.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-	 <scm>
-    	<url>git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</url>
-    	<connection>scm:git:git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</connection>
-    	<developerConnection>scm:git:git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</developerConnection>
-    	<tag>HEAD</tag>
-    </scm>
+
     <dependencies>
         <!-- gson -->
         <dependency>
@@ -204,5 +180,10 @@
             </plugin> -->
         </plugins>
     </build>
-       
+    <scm>
+    	<url>git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</url>
+    	<connection>scm:git:git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</connection>
+    	<developerConnection>scm:git:git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</developerConnection>
+    	<tag>HEAD</tag>
+    </scm>
 </project>
