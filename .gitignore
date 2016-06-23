@@ -16,3 +16,4 @@ target/nubomedia-cdn-client-0.0.2-jar-with-dependencies.jar
 target/nubomedia-cdn-client-0.0.2-sources.jar.asc
 *.asc
 release.properties
+/target
