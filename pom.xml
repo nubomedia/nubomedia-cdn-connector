@@ -43,6 +43,12 @@
     	<url>git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</url>
     	<tag>HEAD</tag>
     </scm>
+    <distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
     <dependencies>
         <!-- gson -->
         <dependency>
