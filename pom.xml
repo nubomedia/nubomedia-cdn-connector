@@ -3,6 +3,7 @@
     <groupId>de.fhg.fokus.nubomedia</groupId>
     <artifactId>nubomedia-cdn-client</artifactId>
     <version>0.0.5-SNAPSHOT</version>
+    <url>www.nubomedia.eu</url>
     <packaging>jar</packaging>
     <name>nubomedia-cdn-client</name>
     <description>The NUBOMEDIA CDN client provides functionality to connect to users CDN network from the NUBOMEDIA
@@ -207,6 +208,5 @@
                 </executions>
             </plugin> -->
         </plugins>
-    </build>
-       
+    </build>           
 </project>
