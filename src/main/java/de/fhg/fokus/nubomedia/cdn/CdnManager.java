@@ -62,11 +62,9 @@ public class CdnManager {
 					provider.uploadVideo(new URL(videoURL), metaData, null, listerner, credential);
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
-				}
-				
-			}
-			
-			
+					log.error("failed to upload video", e.getMessage());
+				}				
+			}						
 		}
 	}
 

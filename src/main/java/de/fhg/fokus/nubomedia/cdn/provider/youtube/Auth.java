@@ -18,9 +18,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.auth.oauth2.StoredCredential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -39,7 +36,7 @@ import com.google.common.collect.Lists;
  * Shared class used by every sample. Contains methods for authorizing a user and caching credentials.
  */
 public class Auth {
-    private static final Logger log = LoggerFactory.getLogger(Auth.class);
+   
 
     /**
      * Define a global instance of the HTTP transport.
@@ -56,7 +53,6 @@ public class Auth {
      */
     private static final String CREDENTIALS_DIRECTORY = ".oauth-credentials";
 
-    private static boolean isInitialized = false;
     private static GoogleClientSecrets clientSecrets = null;
 
     private static List<String> uploadScope = Lists.newArrayList("https://www.googleapis.com/auth/youtube.upload");

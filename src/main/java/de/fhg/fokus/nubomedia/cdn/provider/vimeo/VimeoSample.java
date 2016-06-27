@@ -17,9 +17,7 @@ import java.io.File;
 import com.clickntap.vimeo.Vimeo;
 import com.clickntap.vimeo.VimeoResponse;
 
-public class VimeoSample {
-
-	private static final String SAMPLE_VIDEO_FILENAME = "sample-video.mp4";
+public class VimeoSample {	
 	
 	public static void main(String[] args) throws Exception {
 		Vimeo vimeo = new Vimeo("149d116abaa5739788e98d34ad412076"); 
