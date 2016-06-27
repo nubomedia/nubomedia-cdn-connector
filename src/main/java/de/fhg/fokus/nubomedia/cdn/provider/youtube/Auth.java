@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ *
+ * 
+ *******************************************************************************/
 package de.fhg.fokus.nubomedia.cdn.provider.youtube;
 
 import java.io.File;
@@ -5,9 +17,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.auth.oauth2.StoredCredential;
@@ -27,7 +36,7 @@ import com.google.common.collect.Lists;
  * Shared class used by every sample. Contains methods for authorizing a user and caching credentials.
  */
 public class Auth {
-    private static final Logger log = LoggerFactory.getLogger(Auth.class);
+   
 
     /**
      * Define a global instance of the HTTP transport.
@@ -44,7 +53,6 @@ public class Auth {
      */
     private static final String CREDENTIALS_DIRECTORY = ".oauth-credentials";
 
-    private static boolean isInitialized = false;
     private static GoogleClientSecrets clientSecrets = null;
 
     private static List<String> uploadScope = Lists.newArrayList("https://www.googleapis.com/auth/youtube.upload");
@@ -70,6 +78,7 @@ public class Auth {
      *
      * @param scopes              list of scopes needed to run youtube upload.
      * @param credentialDatastore name of the credential datastore to cache OAuth tokens
+     * @throws IOException - exception thrown in case of failure 
      */
     public static Credential authorize(List<String> scopes, String credentialDatastore) throws IOException {
 

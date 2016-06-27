@@ -12,3 +12,8 @@ target/maven-archiver/pom.properties
 *.lst
 target/nubomedia-cdn-client-0.0.2-jar-with-dependencies.jar
 *.jar
+*.asc
+target/nubomedia-cdn-client-0.0.2-sources.jar.asc
+*.asc
+release.properties
+/target
