@@ -1,15 +1,32 @@
-# Nubomedia CDN Connector
+# NUBOMEDIA CDN Connector
 This project is part of the [NUBOMEDIA](http://www.nubomedia.eu/) research initiative.
 
-### Overview
-This main objective of the NUBOMEDIA CDN Connector is to evaluate current online user-generated content delivery providers who offer open APIs to access the user’s data and provide a service to NUBOMEDIA users/applications to connect to one or more CDN via an API.  
-A number of use cases have been identified that will be interesting for NUBOMEDIA for the usage of such existing third party CDNs:
-* **Upload a file to CDN**: Uploading a video file to the specific CDN which has been recorded before. This allows a user to upload their video call session to a CDN and publish this video content to users connecting to this CDN.
-* **Discover videos stored on a CDN**:  Provide an API that NUBOMEDIA clients can use to discover video content stored on the CDN.
-* **Delete Videos**: Delete previously uploaded videos
-
+### Connectors Overview
+NUBOMEDIA Connectors enable interoperability of the NUBOMEDIA platfrom with external media service providers with the main objective to enrich the capabilitiy set of the NUBOMEDIA services. Ths CDN connector is an SDK which offers a framework that aggregates different CDN Data APIs towards NUBOMEDIA applications. Developers can incorporate this SDK to upload media sessions to CDN networks. 
 
 ## Getting Started
+To obtain the CDN connector, it can be done by means of [Maven](https://maven.apache.org/) in a Java project. The CDN Connector library can be found on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Cde.fhg). Simply include it on your project's *pom.xml* file as describe below. 
+
+```xml
+<dependencies>
+   <!-- Kurento client dependency -->
+   <dependency>
+      <groupId>org.kurento</groupId>
+	  <artifactId>kurento-client</artifactId>
+   </dependency>
+
+   <!-- Nubomedia client dependency -->
+   <dependency>
+      <groupId>de.fhg.fokus.nubomedia</groupId>
+      <artifactId>nubomedia-media-client</artifactId>
+      <version>1.0.2</version>
+   </dependency>
+</dependencies>
+```
+
+
+
+
 ```
 1. mvn install
 2. java -jar target/nubomedia-cdn-client-0.0.2-jar-with-dependencies.jar
