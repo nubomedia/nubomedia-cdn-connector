@@ -41,8 +41,7 @@
 	 <scm>    
     	<connection>scm:git:git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</connection>
     	<developerConnection>scm:git:git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</developerConnection>
-    	<url>git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</url>
-    	<tag>HEAD</tag>
+    	<url>git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</url>    	
     </scm>
     <distributionManagement>
 		<snapshotRepository>
