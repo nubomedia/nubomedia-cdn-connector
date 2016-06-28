@@ -9,28 +9,15 @@ To obtain the CDN connector, it can be done by means of [Maven](https://maven.ap
 
 ```xml
 <dependencies>
-   <!-- Kurento client dependency -->
-   <dependency>
-      <groupId>org.kurento</groupId>
-	  <artifactId>kurento-client</artifactId>
-   </dependency>
-
-   <!-- Nubomedia client dependency -->
+   <!-- Nubomedia cdn client dependency -->
    <dependency>
       <groupId>de.fhg.fokus.nubomedia</groupId>
-      <artifactId>nubomedia-media-client</artifactId>
-      <version>1.0.2</version>
+      <artifactId>nubomedia-cdn-client</artifactId>
+      <version>0.0.5</version>
    </dependency>
 </dependencies>
 ```
 
-
-
-
-```
-1. mvn install
-2. java -jar target/nubomedia-cdn-client-0.0.2-jar-with-dependencies.jar
-```
 
 ## Usage for Application Developers
 ### Youtube Provider API
