@@ -78,7 +78,9 @@ public class Auth {
      *
      * @param scopes              list of scopes needed to run youtube upload.
      * @param credentialDatastore name of the credential datastore to cache OAuth tokens
+     * @return Credential - the credential
      * @throws IOException - exception thrown in case of failure 
+     * 
      */
     public static Credential authorize(List<String> scopes, String credentialDatastore) throws IOException {
 
