@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.fhg.fokus.nubomedia</groupId>
     <artifactId>nubomedia-cdn-client</artifactId>
-    <version>0.0.7-SNAPSHOT</version>
+    <version>0.0.7</version>
     <url>www.nubomedia.eu</url>
     <packaging>jar</packaging>
     <name>nubomedia-cdn-client</name>
@@ -42,7 +42,7 @@
     	<connection>scm:git:git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</connection>
     	<developerConnection>scm:git:git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</developerConnection>
     	<url>git@github.com:fhg-fokus-nubomedia/nubomedia-cdn-connector.git</url>    	
-      <tag>HEAD</tag>
+      <tag>nubomedia-cdn-client-0.0.7</tag>
   </scm>
     <distributionManagement>
 		<snapshotRepository>
