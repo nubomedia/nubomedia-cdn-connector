@@ -13,6 +13,7 @@
 package de.fhg.fokus.nubomedia.cdn;
 
 import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.services.youtube.model.Video;
 
 public interface CdnProvider {
 		
@@ -22,7 +23,7 @@ public interface CdnProvider {
 	 * @param metaData - Meta data such as title, description and tags	 
 	 * @throws CdnException - Exception 
 	 */
-	public void uploadVideo(String sessionId, VideoMetaData metaData) throws CdnException;
+	public Video uploadVideo(String sessionId, VideoMetaData metaData) throws CdnException;
 	
 	/**
 	 * Deletes the video with the given identifier from the CDN

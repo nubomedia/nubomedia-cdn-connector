@@ -43,22 +43,23 @@ public class YouTubeProvider implements CdnProvider {
     private static final Logger log = LoggerFactory.getLogger(YouTubeProvider.class);
     private Credential credential;
     
-    public void uploadVideo(URL url, VideoMetaData metaData, String accessToken, MediaHttpUploaderProgressListener listerner, Credential credential2) {
+    public Video uploadVideo(URL url, VideoMetaData metaData, String accessToken, MediaHttpUploaderProgressListener listerner, Credential credential2) {
         this.credential = credential2;
-    	uploadVideo(url, metaData, accessToken, listerner);
+    	return uploadVideo(url, metaData, accessToken, listerner);
     }
 
-    public void uploadVideo(URL url, VideoMetaData metaData, String accessToken, MediaHttpUploaderProgressListener progressListener) {
+    public Video uploadVideo(URL url, VideoMetaData metaData, String accessToken, MediaHttpUploaderProgressListener progressListener) {
         try {
             ReadableByteChannel rbc = Channels.newChannel(url.openStream());
             InputStream videoStream = Channels.newInputStream(rbc);
-            uploadVideo(videoStream, metaData, accessToken, progressListener);
+           return  uploadVideo(videoStream, metaData, accessToken, progressListener);
         } catch (IOException | CdnException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
-    public Object uploadVideo(InputStream videoStream, VideoMetaData metaData, String accessToken, MediaHttpUploaderProgressListener progressListener) throws CdnException {
+    public Video uploadVideo(InputStream videoStream, VideoMetaData metaData, String accessToken, MediaHttpUploaderProgressListener progressListener) throws CdnException {
         try 
         {
         	if(credential == null)
@@ -125,16 +126,9 @@ public class YouTubeProvider implements CdnProvider {
             uploader.setProgressListener(progressListener);
             
             // Call the API and upload the video.
-            Video returnedVideo = videoInsert.execute();
+            return videoInsert.execute();
 
-            // Print data about the newly inserted video from the API response.
-            System.out.println("\n================== Returned Video ==================\n");
-            System.out.println("  - Id: " + returnedVideo.getId());
-            System.out.println("  - Title: " + returnedVideo.getSnippet().getTitle());
-            System.out.println("  - Tags: " + returnedVideo.getSnippet().getTags());
-            System.out.println("  - Privacy Status: " + returnedVideo.getStatus().getPrivacyStatus());
-            System.out.println("  - Video view count: " + returnedVideo.getStatistics().getViewCount());
-            return returnedVideo;
+            
         } catch (GoogleJsonResponseException e) {
             System.err.println("GoogleJsonResponseException code: " + e.getDetails().getCode() + " : "
                     + e.getDetails().getMessage());
@@ -151,8 +145,8 @@ public class YouTubeProvider implements CdnProvider {
     }
 
     @Override
-    public void uploadVideo(String sessionId, VideoMetaData metaData) throws CdnException {
-    	// TODO Auto-generated method stub
+    public Video uploadVideo(String sessionId, VideoMetaData metaData) throws CdnException {
+    		return null;	
     }
 
     public void deleteVideo(String videoId) throws CdnException {
