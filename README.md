@@ -5,7 +5,7 @@ This project is part of the [NUBOMEDIA](http://www.nubomedia.eu/) research initi
 NUBOMEDIA Connectors enable interoperability of the NUBOMEDIA platfrom with external media service providers with the main objective to enrich the capabilitiy set of the NUBOMEDIA services. Ths CDN connector is an SDK which offers a framework that aggregates different CDN Data APIs towards NUBOMEDIA applications. Developers can incorporate this SDK to upload media sessions to CDN networks. 
 
 ## Getting Started
-To obtain the CDN connector, it can be done by means of [Maven](https://maven.apache.org/) in a Java project. The CDN Connector library can be found on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Cde.fhg). Simply include it on your project's *pom.xml* file as describe below. 
+To obtain the CDN connector, it can be done by means of [Maven](https://maven.apache.org/) in a Java project. The CDN Connector library can be found on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Cde.fhg.fokus.nubomedia). Simply include it on your project's *pom.xml* file as describe below. 
 
 ```xml
 <dependencies>
