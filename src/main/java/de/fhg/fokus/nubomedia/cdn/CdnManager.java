@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.media.MediaHttpUploaderProgressListener;
+import com.google.api.services.youtube.model.Video;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -48,7 +49,7 @@ public class CdnManager {
 		providers.remove(scheme);
 	}
 	
-	public void uploadVideo(String scheme, String videoURL, JsonObject jsonMessage, Credential credential, MediaHttpUploaderProgressListener listerner)
+	public Video uploadVideo(String scheme, String videoURL, JsonObject jsonMessage, Credential credential, MediaHttpUploaderProgressListener listerner)
 	{
 		if(!providers.isEmpty())
 		{
@@ -59,13 +60,14 @@ public class CdnManager {
 					provider = (YouTubeProvider) providers.get(scheme);	
 					Gson gson = new GsonBuilder().setPrettyPrinting().create();
 					VideoMetaData metaData = gson.fromJson(jsonMessage.get("metaData"), VideoMetaData.class);
-					provider.uploadVideo(new URL(videoURL), metaData, null, listerner, credential);
+					return provider.uploadVideo(new URL(videoURL), metaData, null, listerner, credential);
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
 					log.error("failed to upload video", e.getMessage());
 				}				
 			}						
 		}
+		return null;
 	}
 
 	public void storeCredentials(String scheme, Credential credential) {
