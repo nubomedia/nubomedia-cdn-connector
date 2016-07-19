@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.BindException;
 import java.util.List;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -109,9 +110,14 @@ public class Auth {
         //LocalServerReceiver localReceiver = new LocalServerReceiver.Builder().setPort(8443).build();
         String host = System.getenv("ROUTE");
         System.out.println("****** ROUTE is "+ host);
-        LocalServerReceiver localReceiver = new LocalServerReceiver.Builder().setHost(host).setPort(8443).build();
-        //LocalServerReceiver(host, 8443);
-        // Authorize.
-        return new AuthorizationCodeInstalledApp(flow, localReceiver).authorize("user");
+        try {
+        	//8443
+        	LocalServerReceiver localReceiver = new LocalServerReceiver.Builder().setHost(host).setPort(8080).build();
+        	return new AuthorizationCodeInstalledApp(flow, localReceiver).authorize("user");
+		} catch (BindException  e) {
+			// TODO: handle exception
+		}
+        return null;
+        
     }
 }
