@@ -17,3 +17,4 @@ target/nubomedia-cdn-client-0.0.2-sources.jar.asc
 *.asc
 release.properties
 /target
+pom.xml.releaseBackup
