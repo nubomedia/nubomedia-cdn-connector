@@ -1,11 +1,30 @@
-# NUBOMEDIA CDN Connector
-This project is part of the [NUBOMEDIA](http://www.nubomedia.eu/) research initiative.
+[![][NUBOMEDIA Logo]][NUBOMEDIA]
 
-### Connectors Overview
+Copyright © 2016 [NUBOMEDIA]. Licensed under [Apache 2.0 License].
+
+NUBOMEDIA CDN Connector
+=======================
+
 NUBOMEDIA Connectors enable interoperability of the NUBOMEDIA platfrom with external media service providers with the main objective to enrich the capabilitiy set of the NUBOMEDIA services. Ths CDN connector is an SDK which offers a framework that aggregates different CDN Data APIs towards NUBOMEDIA applications. Developers can incorporate this SDK to upload media sessions to CDN networks. 
 
-## Getting Started
-To obtain the CDN connector, it can be done by means of [Maven](https://maven.apache.org/) in a Java project. The CDN Connector library can be found on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Cde.fhg.fokus.nubomedia). Simply include it on your project's *pom.xml* file as describe below. 
+What is NUBOMEDIA
+-----------------
+
+This project is part of [NUBOMEDIA], which is an open source cloud Platform as a
+Service (PaaS) which makes possible to integrate Real Time Communications (RTC)
+and multimedia through advanced media processing capabilities. The aim of
+NUBOMEDIA is to democratize multimedia technologies helping all developers to
+include advanced multimedia capabilities into their Web and smartphone
+applications in a simple, direct and fast manner. To accomplish that objective,
+NUBOMEDIA provides a set of APIs that try to abstract all the low level details
+of service deployment, management, and exploitation allowing applications to
+transparently scale and adapt to the required load while preserving QoS
+guarantees.
+
+Getting Started with NUBOMEDIA CDN Connector
+--------------------------------------------
+
+To obtain the CDN connector, it can be done by means of [Maven] in a Java project. The CDN Connector library can be found on [Maven Central Repository]. Simply include it on your project's *pom.xml* file as describe below. 
 
 ```xml
 <dependencies>
@@ -18,8 +37,9 @@ To obtain the CDN connector, it can be done by means of [Maven](https://maven.ap
 </dependencies>
 ```
 
+Usage for Application Developers
+--------------------------------
 
-## Usage for Application Developers
 ### Youtube Provider API
 To use the Nubomedia CDN Connector to upload a video that is stored on the kurento repository server, you have to connect a browser to the following destination:
 ```
@@ -77,27 +97,78 @@ var url = cdn_youtube + "?videoUrl=" + videoUrl + "&metaData=" + window.btoa(JSO
 console.log("opening new window for: " + url);
 window.open(url);
 ```
+
+Documentation
+-------------
+
+The [NUBOMEDIA] project provides detailed documentation including tutorials,
+installation and [Development Guide].
+
+Source
+------
+
+Source code for other NUBOMEDIA projects can be found in the [GitHub NUBOMEDIA
+Group].
+
+News
+----
+
+Follow us on Twitter @[NUBOMEDIA Twitter].
+
 Issue tracker
 -------------
 
-Issues and bug reports should be posted to the [GitHub Issue List](https://github.com/fhg-fokus-nubomedia/nubomedia-cdn-connector/issues)
+Issues and bug reports should be posted to [GitHub Issues].
 
 Licensing and distribution
 --------------------------
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
 
-Support and Contribution
--------------------------
+Contribution policy
+-------------------
 
-Need some support, wish to contribute? Then get in contact with us via our [mailinglist](mailto:nubomedia@fokus.fraunhofer.de)!
+You can contribute to the NUBOMEDIA community through bug-reports, bug-fixes,
+new code or new documentation. For contributing to the NUBOMEDIA community,
+drop a post to the [NUBOMEDIA Public Mailing List] providing full information
+about your contribution and its value. In your contributions, you must comply
+with the following guidelines
+
+* You must specify the specific contents of your contribution either through a
+  detailed bug description, through a pull-request or through a patch.
+* You must specify the licensing restrictions of the code you contribute.
+* For newly created code to be incorporated in the NUBOMEDIA code-base, you
+  must accept NUBOMEDIA to own the code copyright, so that its open source
+  nature is guaranteed.
+* You must justify appropriately the need and value of your contribution. The
+  NUBOMEDIA project has no obligations in relation to accepting contributions
+  from third parties.
+* The NUBOMEDIA project leaders have the right of asking for further
+  explanations, tests or validations of any code contributed to the community
+  before it being incorporated into the NUBOMEDIA code-base. You must be ready
+  to addressing all these kind of concerns before having your code approved.
+
+Support
+-------
+
+The NUBOMEDIA community provides support through the [NUBOMEDIA Public Mailing List].
+
+[Apache 2.0 License]: https://www.apache.org/licenses/LICENSE-2.0.txt
+[Development Guide]: http://nubomedia.readthedocs.org/
+[GitHub Issues]: https://github.com/nubomedia/nubomedia-cdn-connector/issues
+[GitHub NUBOMEDIA Group]: https://github.com/nubomedia
+[NUBOMEDIA Logo]: http://www.nubomedia.eu/sites/default/files/nubomedia_logo-small.png
+[NUBOMEDIA Twitter]: https://twitter.com/nubomedia
+[NUBOMEDIA Public Mailing list]: https://groups.google.com/forum/#!forum/nubomedia-dev
+[NUBOMEDIA]: http://www.nubomedia.eu
+[Maven]: https://maven.apache.org/
+[Maven Central Repository]: http://search.maven.org/#search%7Cga%7C1%7Cde.fhg.fokus.nubomedia
